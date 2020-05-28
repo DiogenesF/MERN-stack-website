@@ -1,19 +1,17 @@
 const express = require("express");
 const connectDB = require("./config/db");
 const postRouter = require("./routes/admin/posts");
-const authRouter = require("./routes/admin/auth");
+const loginRouter = require("./routes/admin/login");
 
 const app = express();
 
 connectDB();
 
 app.use("/files", express.static("files"));
-
-app.set("view engine", "ejs");
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use("/admin/posts", postRouter);
-app.use("/admin/auth", authRouter);
+app.use("/admin/login", loginRouter);
 
 const PORT = process.env.PORT || 5000;
 
