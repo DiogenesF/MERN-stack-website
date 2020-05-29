@@ -1,18 +1,17 @@
 const mongoose = require("mongoose");
 
-const UserSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    default: "Admin",
-  },
-  email: {
+const BannerSchema = new mongoose.Schema({
+  titulo: {
     type: String,
     required: true,
   },
-  password: {
+  img: {
     type: String,
-    required: true,
+  },
+  date: {
+    type: Date,
+    default: Date.now,
   },
 });
 
-module.exports = User = mongoose.model("user", UserSchema);
+module.exports = Banner = mongoose.model("banner", BannerSchema);
