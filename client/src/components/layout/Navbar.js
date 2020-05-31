@@ -1,94 +1,64 @@
 import React from "react";
-import "./Navbar.css";
+import Fox from "../../images/fox-gradient.png";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Navbar = (props) => {
   return (
-    <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+    <nav className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
       <button
         id="sidebarToggleTop"
-        class="btn btn-link d-md-none rounded-circle mr-3"
+        className="btn btn-link d-md-none rounded-circle mr-3"
       >
-        <i class="fa fa-bars"></i>
+        <FontAwesomeIcon icon="bars" color="red" />
       </button>
 
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item dropdown no-arrow d-sm-none">
-          <a
-            class="nav-link dropdown-toggle"
-            href="#"
-            id="searchDropdown"
-            role="button"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-          >
-            <i class="fas fa-search fa-fw"></i>
-          </a>
-          <div
-            class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
-            aria-labelledby="searchDropdown"
-          >
-            <form class="form-inline mr-auto w-100 navbar-search">
-              <div class="input-group">
-                <input
-                  type="text"
-                  class="form-control bg-light border-0 small"
-                  placeholder="Search for..."
-                  aria-label="Search"
-                  aria-describedby="basic-addon2"
-                ></input>
-                <div class="input-group-append">
-                  <button class="btn btn-primary" type="button">
-                    <i class="fas fa-search fa-sm"></i>
-                  </button>
-                </div>
-              </div>
-            </form>
-          </div>
-        </li>
+      <ul className="navbar-nav ml-auto">
+        <div className="topbar-divider d-none d-sm-block"></div>
 
-        <div class="topbar-divider d-none d-sm-block"></div>
-
-        <li class="nav-item dropdown no-arrow">
+        <li className="nav-item dropdown no-arrow">
           <a
-            class="nav-link dropdown-toggle"
-            href="#"
+            className="nav-link dropdown-toggle"
+            href="#!"
             id="userDropdown"
             role="button"
             data-toggle="dropdown"
             aria-haspopup="true"
             aria-expanded="false"
           >
-            <span class="mr-2 d-none d-lg-inline text-gray-600 small">
-              Legis Consultoria
+            <span className="mr-2 d-none d-lg-inline text-gray-600 small">
+              Admin
             </span>
             <img
-              class="img-profile rounded-circle"
-              src="/imagens/logo/logo3.png"
+              className="img-profile rounded-circle"
+              src={Fox}
+              alt="brand"
             ></img>
           </a>
           <div
-            class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+            className="dropdown-menu dropdown-menu-right shadow animated--grow-in"
             aria-labelledby="userDropdown"
           >
-            <a class="dropdown-item" href="#">
-              <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+            <a className="dropdown-item" href="#!">
+              <i className="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
               Profile
             </a>
-            <a class="dropdown-item" href="#">
+            <a className="dropdown-item" href="#!">
+              <i className="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
               Settings
             </a>
-            <a class="dropdown-item" href="#">
+            <a className="dropdown-item" href="#!">
+              <i className="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
               Activity Log
             </a>
-            <div class="dropdown-divider"></div>
+            <div className="dropdown-divider"></div>
             <a
-              class="dropdown-item"
-              href="#"
+              className="dropdown-item"
+              href="#!"
               data-toggle="modal"
               data-target="#logoutModal"
             >
-              <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+              <i className="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
               Logout
             </a>
           </div>

@@ -10,11 +10,11 @@ import {
   faFlag,
   faBars,
   faTimes,
-  faGavel,
   faBook,
   faPhone,
   faLessThan,
   faSearch,
+  faUserFriends,
 } from "@fortawesome/free-solid-svg-icons";
 
 library.add(
@@ -25,10 +25,10 @@ library.add(
   faBars,
   faBook,
   faTimes,
-  faGavel,
   faPhone,
   faLessThan,
-  faSearch
+  faSearch,
+  faUserFriends
 );
 
 function App() {
