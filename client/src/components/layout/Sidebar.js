@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import Fox from "../../images/fox-gradient.png";
-
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Sidebar = (props) => {
@@ -32,10 +32,10 @@ const Sidebar = (props) => {
         </div>
 
         <li className="nav-item">
-          <a className="nav-link" href="#!">
+          <Link className="nav-link" to="/admin/portifolios">
             <FontAwesomeIcon icon="book" size="lg" />
             <span>Portifolio</span>
-          </a>
+          </Link>
           <a className="nav-link" href="#!">
             <FontAwesomeIcon icon="flag" size="lg" />
             <span>Banners</span>

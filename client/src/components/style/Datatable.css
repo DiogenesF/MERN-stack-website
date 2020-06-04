@@ -1,3 +1,9 @@
+#table th,
+#table td,
+.cent {
+  text-align: center;
+}
+
 table.dataTable {
   clear: both;
   margin-top: 6px !important;

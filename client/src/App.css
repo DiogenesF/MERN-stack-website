@@ -10,6 +10,10 @@
  * Copyright 2011-2019 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
+.ck-editor__editable_inline {
+  min-height: 200px !important;
+}
+
 :root {
   --blue: #4e73df;
   --indigo: #6610f2;
@@ -2427,11 +2431,21 @@ fieldset:disabled a.btn {
   background-color: #4e73df;
   border-color: #4e73df;
 }
+.btn-fox {
+  color: #fff;
+  background-color: #db3d44;
+  border-color: #db3d44;
+}
 
 .btn-primary:hover {
   color: #fff;
   background-color: #2e59d9;
   border-color: #2653d4;
+}
+.btn-fox:hover {
+  color: #fff;
+  background-color: #ff4f14;
+  border-color: #ff4f14;
 }
 
 .btn-primary:focus,
@@ -9733,6 +9747,10 @@ button.bg-dark:focus {
   color: #4e73df !important;
 }
 
+.text-fox {
+  color: #db3d44 !important;
+}
+
 a.text-primary:hover,
 a.text-primary:focus {
   color: #224abe !important;
@@ -10978,24 +10996,6 @@ a:focus {
   .chart-pie {
     height: calc(20rem - 43px) !important;
   }
-}
-
-.bg-login-image {
-  background: url("https://source.unsplash.com/K4mSJ7kc0As/600x800");
-  background-position: center;
-  background-size: cover;
-}
-
-.bg-register-image {
-  background: url("https://source.unsplash.com/Mv9hjnEUHR4/600x800");
-  background-position: center;
-  background-size: cover;
-}
-
-.bg-password-image {
-  background: url("https://source.unsplash.com/oWTW-jNGl9I/600x800");
-  background-position: center;
-  background-size: cover;
 }
 
 form.user .custom-checkbox.small label {
