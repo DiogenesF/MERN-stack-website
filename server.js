@@ -10,7 +10,7 @@ const app = express();
 
 connectDB();
 
-app.use("/files", express.static("files"));
+app.use("/images", express.static("images"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use("/admin/posts", postRouter);

@@ -9,8 +9,10 @@ import Login from "./login/Login";
 import store from "../store/store";
 import setAuthToken from "../utils/setAuthToken";
 import Portifolio from "./table/Portifolio";
-import PortifolioCriar from "./pagecreate/PortifoliosCreate";
+import PortifoliosCreate from "./pagecreate/PortifoliosCreate";
+
 import { getUser } from "../redux/actions/auth";
+import PortifoliosEdit from "./pageedit/PortifoliosEdit";
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -24,32 +26,35 @@ const MainComponent = (props) => {
   return (
     <Provider store={store}>
       <Router>
-        <Switch>
-          <Route exact path="/login" component={Login} />
-          <div id="wrapper">
-            <Sidebar />
-            <div id="content-wrapper" className="d-flex flex-column">
-              <div id="content">
-                <Navbar />
-                <div className="container-fluid">
-                  <Switch>
-                    <PrivateRoute
-                      exact
-                      path="/admin/portifolios"
-                      component={Portifolio}
-                    />
-                    <PrivateRoute
-                      exact
-                      path="/admin/portifolios/create"
-                      component={PortifolioCriar}
-                    />
-                    <PrivateRoute component={Notfound} />
-                  </Switch>
-                </div>
+        <div id="wrapper">
+          <Sidebar />
+          <div id="content-wrapper" className="d-flex flex-column">
+            <div id="content">
+              <Navbar />
+              <div className="container-fluid">
+                <Switch>
+                  <Route exact path="/login" component={Login} />
+                  <PrivateRoute
+                    exact
+                    path="/admin/portifolios"
+                    component={Portifolio}
+                  />
+                  <PrivateRoute
+                    exact
+                    path="/admin/portifolios/create"
+                    component={PortifoliosCreate}
+                  />
+                  <PrivateRoute
+                    exct
+                    path="/admin/portifolios/:portId"
+                    component={PortifoliosEdit}
+                  />
+                  <Route component={Notfound} />
+                </Switch>
               </div>
             </div>
           </div>
-        </Switch>
+        </div>
       </Router>
     </Provider>
   );

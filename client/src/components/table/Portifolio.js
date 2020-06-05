@@ -3,19 +3,25 @@ import { connect } from "react-redux";
 import { getPortifolios } from "../../redux/actions/portifolio";
 import PropTypes from "prop-types";
 import "../style/Datatable.css";
+import { deletePortifolio } from "../../redux/actions/portifolio";
 import { Link } from "react-router-dom";
 
 const Portifolio = ({
   getPortifolios,
+  deletePortifolio,
   portifolios: { portifolios, loading },
 }) => {
   useEffect(() => {
     getPortifolios();
   }, [getPortifolios]);
 
+  const onClick = (id) => {
+    deletePortifolio(id);
+  };
+
   return (
     <Fragment>
-      {!(portifolios.length > 0) ? (
+      {loading ? (
         ""
       ) : (
         <div>
@@ -117,47 +123,58 @@ const Portifolio = ({
                           </tr>
                         </tfoot>
                         <tbody>
-                          {portifolios.map((each) => {
-                            return (
-                              <Fragment key={each._id}>
-                                <tr role="row" className="odd">
-                                  <td>{each.titulo}</td>
-                                  <td>
-                                    <button
-                                      type="button"
-                                      className="btn btn-success"
-                                      data-toggle="modal"
-                                      data-target="#modalDetalhes"
-                                    >
-                                      <span className="far fa-file-alt">
-                                        Detalhes
-                                      </span>
-                                    </button>
-                                    <button
-                                      type="button"
-                                      className="btn btn-warning"
-                                      data-toggle="modal"
-                                      data-target="#modalEditar"
-                                    >
-                                      <span className="far fa-edit">
-                                        Editar
-                                      </span>
-                                    </button>
-                                    <button
-                                      type="button"
-                                      className="btn btn-danger"
-                                      data-toggle="modal"
-                                      data-target="#modalApagar"
-                                    >
-                                      <span className="far fa-trash-alt">
-                                        Apagar
-                                      </span>
-                                    </button>
-                                  </td>
-                                </tr>
-                              </Fragment>
-                            );
-                          })}
+                          {portifolios.length > 0 ? (
+                            <Fragment>
+                              {portifolios.map((each) => {
+                                return (
+                                  <Fragment key={each._id}>
+                                    <tr role="row" className="odd">
+                                      <td>{each.titulo}</td>
+                                      <td>
+                                        <button
+                                          type="button"
+                                          className="btn btn-success"
+                                          data-toggle="modal"
+                                          data-target="#modalDetalhes"
+                                        >
+                                          <span className="far fa-file-alt">
+                                            Detalhes
+                                          </span>
+                                        </button>
+                                        <Link
+                                          to={`/admin/portifolios/${each._id}`}
+                                          type="button"
+                                          className="btn btn-warning"
+                                        >
+                                          <span className="far fa-edit">
+                                            Editar
+                                          </span>
+                                        </Link>
+                                        <button
+                                          type="button"
+                                          className="btn btn-danger"
+                                          onClick={() => onClick(each._id)}
+                                        >
+                                          <span className="far fa-trash-alt">
+                                            Apagar
+                                          </span>
+                                        </button>
+                                      </td>
+                                    </tr>
+                                  </Fragment>
+                                );
+                              })}
+                            </Fragment>
+                          ) : (
+                            <tr>
+                              <td className="text-center">
+                                <h5>...</h5>
+                              </td>
+                              <td>
+                                <h5> Nenhum registro a ser exibido </h5>
+                              </td>
+                            </tr>
+                          )}
                         </tbody>
                       </table>
                     </div>
@@ -232,10 +249,13 @@ const Portifolio = ({
 Portifolio.propTypes = {
   getPortifolios: PropTypes.func.isRequired,
   portifolios: PropTypes.object.isRequired,
+  deletePortifolio: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   portifolios: state.portifolio,
 });
 
-export default connect(mapStateToProps, { getPortifolios })(Portifolio);
+export default connect(mapStateToProps, { getPortifolios, deletePortifolio })(
+  Portifolio
+);

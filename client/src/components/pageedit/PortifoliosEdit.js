@@ -1,16 +1,38 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import CKEditor from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { createPortifolios } from "../../redux/actions/portifolio";
+import {
+  createPortifolios,
+  getPortifolio,
+} from "../../redux/actions/portifolio";
 import PropTypes from "prop-types";
 
-const PortifoliosCreate = ({ createPortifolios }) => {
+const PortifoliosEdit = ({
+  createPortifolios,
+  getPortifolio,
+  match,
+  portifolio: { portifolio, loading },
+}) => {
   const [img, setImg] = useState("");
   const [showImg, setShowImg] = useState("");
   const [titulo, setTitulo] = useState("");
   const [descricao, setDesc] = useState("");
+
+  useEffect(() => {
+    getPortifolio(match.params.portId);
+  }, [match.params.portId, getPortifolio]);
+
+  useEffect(() => {
+    if (!loading) {
+      if (portifolio) {
+        setImg(portifolio.img);
+        setTitulo(portifolio.titulo);
+        setDesc(portifolio.descricao);
+      }
+    }
+  }, [portifolio, loading]);
 
   const onChange = (e, data) => {
     if (data) {
@@ -42,7 +64,7 @@ const PortifoliosCreate = ({ createPortifolios }) => {
         <div className="card">
           <div className="card-body mb-4">
             <div className="card-title text-center">
-              <h3 className="text-dark">Criar um novo item</h3>
+              <h3 className="text-dark">Editar item</h3>
             </div>
             <div className="card-text m-4">
               <form
@@ -115,7 +137,6 @@ const PortifoliosCreate = ({ createPortifolios }) => {
                           onChange(event, data);
                         }}
                       />
-
                       <small>
                         <span style={{ color: "red" }}>* </span>campos
                         obrigatorios
@@ -141,11 +162,10 @@ const PortifoliosCreate = ({ createPortifolios }) => {
                     height="100"
                     width="100"
                     alt=""
-                    src={showImg}
+                    src={showImg !== "" ? showImg : img}
                   />
                 </div>
                 <hr></hr>
-
                 <div className="text-center">
                   <button
                     type="submit"
@@ -172,8 +192,16 @@ const PortifoliosCreate = ({ createPortifolios }) => {
   );
 };
 
-PortifoliosCreate.propTypes = {
+PortifoliosEdit.propTypes = {
   createPortifolios: PropTypes.func.isRequired,
+  getPortifolio: PropTypes.func.isRequired,
+  portifolio: PropTypes.object.isRequired,
 };
 
-export default connect(null, { createPortifolios })(PortifoliosCreate);
+const mapStateToProps = (state) => ({
+  portifolio: state.portifolio,
+});
+
+export default connect(mapStateToProps, { createPortifolios, getPortifolio })(
+  PortifoliosEdit
+);

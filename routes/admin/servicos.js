@@ -89,7 +89,7 @@ router.post(
         descricao: req.body.descricao,
       };
       if (req.file) {
-        newServico.img = "images/servicos/" + req.file.filename;
+        newServico.img = "/images/servicos/" + req.file.filename;
       }
 
       const servico = new Servico(newServico);
