@@ -9,3 +9,6 @@ export const LOGIN = "LOGIN";
 export const LOGOUT = "LOGOUT";
 export const LOGIN_ERROR = "LOGIN_ERROR";
 export const GET_USER = "GET_USER";
+export const GET_CATEGORIAS = "GET_CATEGORIAS";
+export const CREATE_CATEGORIA = "CREATE_CATEGORIA";
+export const CATEGORIA_ERROR = "CATEGORIA_ERROR";

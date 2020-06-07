@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 import store from "../../store/store";
 import { LOGOUT } from "../../redux/actions/types";
 
+import Typical from "react-typical";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Navbar = ({ auth }) => {
@@ -23,6 +25,12 @@ const Navbar = ({ auth }) => {
           >
             <FontAwesomeIcon icon="bars" color="red" />
           </button>
+
+          <Typical
+            steps={["Bem-vindo", 3000, "", 1000]}
+            loop={Infinity}
+            wrapper="h3"
+          />
 
           <ul className="navbar-nav ml-auto">
             <div className="topbar-divider d-none d-sm-block"></div>

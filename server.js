@@ -5,6 +5,7 @@ const bannerRouter = require("./routes/admin/banners");
 const servicoRouter = require("./routes/admin/servicos");
 const contatoRouter = require("./routes/admin/contato");
 const loginRouter = require("./routes/admin/login");
+const categoriaRouter = require("./routes/admin/categoria");
 
 const app = express();
 
@@ -18,6 +19,7 @@ app.use("/admin/banners", bannerRouter);
 app.use("/admin/servicos", servicoRouter);
 app.use("/admin/contato", contatoRouter);
 app.use("/admin/login", loginRouter);
+app.use("/admin/categoria", categoriaRouter);
 
 const PORT = process.env.PORT || 5000;
 

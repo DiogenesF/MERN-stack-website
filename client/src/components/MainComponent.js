@@ -13,6 +13,8 @@ import PortifoliosCreate from "./pagecreate/PortifoliosCreate";
 
 import { getUser } from "../redux/actions/auth";
 import PortifoliosEdit from "./pageedit/PortifoliosEdit";
+import PortifoliosDetail from "./pagedetails/PortifoliosDetail";
+import { getCategorias } from "../redux/actions/categoria";
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -21,6 +23,7 @@ if (localStorage.token) {
 const MainComponent = (props) => {
   useEffect(() => {
     store.dispatch(getUser());
+    store.dispatch(getCategorias());
   }, []);
 
   return (
@@ -46,8 +49,13 @@ const MainComponent = (props) => {
                   />
                   <PrivateRoute
                     exct
-                    path="/admin/portifolios/:portId"
+                    path="/admin/portifolios/edit/:portId"
                     component={PortifoliosEdit}
+                  />
+                  <PrivateRoute
+                    exct
+                    path="/admin/portifolios/:portId"
+                    component={PortifoliosDetail}
                   />
                   <Route component={Notfound} />
                 </Switch>

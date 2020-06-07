@@ -1,3 +1,5 @@
+const path = require("path");
+const crypto = require("crypto");
 const express = require("express");
 const router = express.Router();
 multer = require("multer");
@@ -9,11 +11,18 @@ const Servico = require("../../models/Servico");
 
 let storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, "./images/servicos");
+    cb(null, path.resolve(__dirname, "..", "..", "images/servicos"));
   },
   filename: function (req, file, cb) {
     let extension = file.originalname.split(".").slice(-1)[0];
-    cb(null, "servicos-" + Date.now() + "." + extension);
+    cb(
+      null,
+      "servicos-" +
+        crypto.randomBytes(4).toString("hex") +
+        Date.now() +
+        "." +
+        extension
+    );
   },
 });
 
@@ -51,6 +60,7 @@ router.get("/", [auth], async (req, res) => {
 router.get("/:servicoId", [auth], async (req, res) => {
   try {
     const servico = await Servico.findById(req.params.servicoId);
+
     if (!servico) {
       return res.status(400).send("Servico not found");
     }
@@ -74,6 +84,7 @@ router.post(
     [
       check("titulo", "Voce deve escrever um titulo"),
       check("descricao", "Voce deve escrever uma descricao"),
+      check("categoria", "Voce deve escolher uma categoria"),
     ],
   ],
   upload.single("img"),
@@ -87,6 +98,7 @@ router.post(
       const newServico = {
         titulo: req.body.titulo,
         descricao: req.body.descricao,
+        categoria: req.body.categoria,
       };
       if (req.file) {
         newServico.img = "/images/servicos/" + req.file.filename;

@@ -12,6 +12,10 @@ const ServicoSchema = new mongoose.Schema({
   img: {
     type: String,
   },
+  categoria: {
+    type: String,
+    required: true,
+  },
   date: {
     type: Date,
     default: Date.now,

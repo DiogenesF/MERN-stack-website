@@ -45,7 +45,7 @@ export const getPortifolio = (id) => async (dispatch) => {
   }
 };
 
-export const createPortifolios = (titulo, descricao, img) => async (
+export const createPortifolios = (titulo, descricao, img, categoria) => async (
   dispatch
 ) => {
   try {
@@ -53,6 +53,7 @@ export const createPortifolios = (titulo, descricao, img) => async (
     fd.append("img", img);
     fd.append("titulo", titulo);
     fd.append("descricao", descricao);
+    fd.append("categoria", categoria);
 
     const res = await api.post("/servicos/upload", fd);
 
@@ -61,7 +62,6 @@ export const createPortifolios = (titulo, descricao, img) => async (
       payload: res.data,
     });
   } catch (err) {
-    console.log(err.response.data);
     dispatch({
       type: PORTIFOLIO_ERROR,
       payload: { msg: err.response.statusText, status: err.response.status },

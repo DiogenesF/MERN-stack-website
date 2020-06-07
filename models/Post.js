@@ -9,7 +9,11 @@ const PostSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  categoria: {
+  categorias: {
+    type: Array,
+    required: true,
+  },
+  categoria_escolhida: {
     type: String,
     required: true,
   },
