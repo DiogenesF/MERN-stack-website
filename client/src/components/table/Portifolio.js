@@ -1,22 +1,29 @@
-import React, { useEffect, Fragment } from "react";
+import React, { useEffect, Fragment, useState } from "react";
 import { connect } from "react-redux";
 import { getPortifolios } from "../../redux/actions/portifolio";
 import PropTypes from "prop-types";
 import "../style/Datatable.css";
-import { deletePortifolio } from "../../redux/actions/portifolio";
+
 import { Link } from "react-router-dom";
+import ModalDelete from "./ModalDelete";
+import Alert from "../layout/Alert";
+
+import Dotdotdot from "react-dotdotdot";
 
 const Portifolio = ({
   getPortifolios,
-  deletePortifolio,
+
   portifolios: { portifolios, loading },
 }) => {
+  const [id, setId] = useState("");
+
   useEffect(() => {
     getPortifolios();
   }, [getPortifolios]);
 
   const onClick = (id) => {
-    deletePortifolio(id);
+    setId(id);
+    console.log(id);
   };
 
   return (
@@ -27,7 +34,7 @@ const Portifolio = ({
         <div>
           <h1 className="h3 mb-2 text-gray-800 cent">Portifolio</h1>
           <p className="mb-4 cent">Portifolios exibidos na home do site.</p>
-
+          <Alert />
           <div className="card shadow mb-4">
             <div
               style={{ display: "flex", justifyContent: "space-between" }}
@@ -129,7 +136,11 @@ const Portifolio = ({
                                 return (
                                   <Fragment key={each._id}>
                                     <tr role="row" className="odd">
-                                      <td>{each.titulo}</td>
+                                      <td>
+                                        <Dotdotdot clamp={1}>
+                                          {each.titulo}
+                                        </Dotdotdot>
+                                      </td>
                                       <td>
                                         <Link
                                           to={`/admin/portifolios/${each._id}`}
@@ -151,7 +162,9 @@ const Portifolio = ({
                                         <button
                                           type="button"
                                           className="btn btn-danger"
-                                          onClick={() => onClick(each._id)}
+                                          onClick={(e) => onClick(each._id)}
+                                          data-toggle="modal"
+                                          data-target="#exampleModalApagar"
                                         >
                                           <span className="far fa-trash-alt">
                                             Apagar
@@ -238,6 +251,7 @@ const Portifolio = ({
               </div>
             </div>
           </div>
+          <ModalDelete id={id} />
         </div>
       )}
     </Fragment>
@@ -247,13 +261,10 @@ const Portifolio = ({
 Portifolio.propTypes = {
   getPortifolios: PropTypes.func.isRequired,
   portifolios: PropTypes.object.isRequired,
-  deletePortifolio: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   portifolios: state.portifolio,
 });
 
-export default connect(mapStateToProps, { getPortifolios, deletePortifolio })(
-  Portifolio
-);
+export default connect(mapStateToProps, { getPortifolios })(Portifolio);

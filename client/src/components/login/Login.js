@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { login } from "../../redux/actions/auth";
 import PropTypes from "prop-types";
+import Alert from "../layout/Alert";
 
 const Login = ({ login, auth }) => {
   const [loginData, setLoginData] = useState({ email: "", password: "" });
@@ -25,6 +26,7 @@ const Login = ({ login, auth }) => {
 
   return (
     <div className="container">
+      <Alert />
       <div className="row justify-content-center">
         <div className="col-xl-10 col-lg-12 col-md-9">
           <div className="card o-hidden border-0 shadow-lg my-5">

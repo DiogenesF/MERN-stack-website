@@ -10,7 +10,6 @@ import store from "../store/store";
 import setAuthToken from "../utils/setAuthToken";
 import Portifolio from "./table/Portifolio";
 import PortifoliosCreate from "./pagecreate/PortifoliosCreate";
-
 import { getUser } from "../redux/actions/auth";
 import PortifoliosEdit from "./pageedit/PortifoliosEdit";
 import PortifoliosDetail from "./pagedetails/PortifoliosDetail";

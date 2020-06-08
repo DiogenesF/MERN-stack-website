@@ -69,7 +69,7 @@ router.get("/:bannerId", [auth], async (req, res) => {
 //Create a new banner
 router.post(
   "/upload",
-  [auth, [check("titulo", "Voce deve escrever um titulo")]],
+  [auth, [check("titulo", "Voce deve escrever um titulo").not().isEmpty()]],
   upload.single("img"),
   async (req, res) => {
     const errors = validationResult(req);
@@ -99,7 +99,7 @@ router.post(
 //Edit a banner
 router.put(
   "/upload/:bannerId",
-  [auth, [check("titulo", "Voce deve escrever um titulo")]],
+  [auth, [check("titulo", "Voce deve escrever um titulo").not().isEmpty()]],
   upload.single("img"),
   async (req, res) => {
     const errors = validationResult(req);

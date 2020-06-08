@@ -27,7 +27,7 @@ const Navbar = ({ auth }) => {
           </button>
 
           <Typical
-            steps={["Bem-vindo", 3000, "", 1000]}
+            steps={["Bem-vindo", 5000, "", 1000]}
             loop={Infinity}
             wrapper="h3"
           />

@@ -1,5 +1,5 @@
 import api from "../../utils/api";
-
+import { setAlert } from "./alert";
 import { GET_CATEGORIAS, CREATE_CATEGORIA, CATEGORIA_ERROR } from "./types";
 
 export const getCategorias = (email, password) => async (dispatch) => {
@@ -26,7 +26,12 @@ export const createCategoria = (categoria) => async (dispatch) => {
       type: CREATE_CATEGORIA,
       payload: res.data,
     });
+    dispatch(setAlert("Categoria criada com sucesso!", "success"));
   } catch (err) {
+    const errors = err.response.data.errors;
+    errors.map((each) => {
+      return dispatch(setAlert(each.msg, "danger"));
+    });
     dispatch({
       type: CATEGORIA_ERROR,
       payload: { msg: err.response.statusText, status: err.response.status },

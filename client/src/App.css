@@ -5175,10 +5175,12 @@ a.badge-dark.focus {
 }
 
 .alert {
+  text-align: center;
   position: relative;
   padding: 0.75rem 1.25rem;
   margin-bottom: 1rem;
-  border: 1px solid transparent;
+  margin-top: 1rem;
+  border: 1px solid;
   border-radius: 0.35rem;
 }
 
@@ -5891,24 +5893,6 @@ a.close.disabled {
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 0.3rem;
   outline: 0;
-}
-
-.modal-backdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1040;
-  width: 100vw;
-  height: 100vh;
-  background-color: #000;
-}
-
-.modal-backdrop.fade {
-  opacity: 0;
-}
-
-.modal-backdrop.show {
-  opacity: 0.5;
 }
 
 .modal-header {
@@ -9963,6 +9947,7 @@ body {
   height: 100%;
 }
 
+html,
 a:focus {
   outline: none;
 }
@@ -9975,6 +9960,7 @@ a:focus {
   background-color: #f8f9fc;
   width: 100%;
   overflow-x: hidden;
+  height: 100vh;
 }
 
 #wrapper #content-wrapper #content {

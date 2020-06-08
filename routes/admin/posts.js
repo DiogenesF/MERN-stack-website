@@ -72,9 +72,9 @@ router.post(
   [
     auth,
     [
-      check("titulo", "Voce deve escrever um titulo"),
-      check("descricao", "Voce deve escrever uma descricao"),
-      check("categoria", "Voce deve escolher uma categoria"),
+      check("titulo", "Voce deve escrever um titulo").not().isEmpty(),
+      check("descricao", "Voce deve escrever uma descricao").not().isEmpty(),
+      check("categoria", "Voce deve escolher uma categoria").not().isEmpty(),
     ],
   ],
   upload.single("img"),
@@ -111,9 +111,9 @@ router.put(
   [
     auth,
     [
-      check("titulo", "Voce deve escrever um titulo"),
-      check("descricao", "Voce deve escrever uma descricao"),
-      check("categoria", "Voce deve escolher uma categoria"),
+      check("titulo", "Voce deve escrever um titulo").not().isEmpty(),
+      check("descricao", "Voce deve escrever uma descricao").not().isEmpty(),
+      check("categoria", "Voce deve escolher uma categoria").not().isEmpty(),
     ],
   ],
   upload.single("img"),

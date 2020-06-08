@@ -1,24 +1,25 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import CKEditor from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import {
-  createPortifolios,
-  getPortifolio,
-} from "../../redux/actions/portifolio";
+import { getPortifolio, editPortifolio } from "../../redux/actions/portifolio";
 import PropTypes from "prop-types";
+import PortifolioModalCategoria from "../pagecreate/PortifolioModalCategoria";
+import Alert from "../layout/Alert";
 
 const PortifoliosEdit = ({
-  createPortifolios,
+  editPortifolio,
   getPortifolio,
   match,
+  categoria: { categorias },
   portifolio: { portifolio, loading },
 }) => {
   const [img, setImg] = useState("");
   const [showImg, setShowImg] = useState("");
   const [titulo, setTitulo] = useState("");
   const [descricao, setDesc] = useState("");
+  const [categoria, setCategoria] = useState("");
 
   useEffect(() => {
     getPortifolio(match.params.portId);
@@ -30,6 +31,7 @@ const PortifoliosEdit = ({
         setImg(portifolio.img);
         setTitulo(portifolio.titulo);
         setDesc(portifolio.descricao);
+        setCategoria(portifolio.categoria);
       }
     }
   }, [portifolio, loading]);
@@ -42,6 +44,9 @@ const PortifoliosEdit = ({
       if (e.target.name === "titulo") {
         setTitulo(e.target.value);
       }
+      if (e.target.name === "categoria") {
+        setCategoria(e.target.value);
+      }
       if (e.target.files) {
         setShowImg(URL.createObjectURL(e.target.files[0]));
         setImg(e.target.files[0]);
@@ -51,11 +56,8 @@ const PortifoliosEdit = ({
 
   const onSubmit = (e) => {
     e.preventDefault();
-    createPortifolios(titulo, descricao, img);
-    setImg("");
-    setTitulo("");
-    setDesc("");
-    setShowImg(null);
+
+    editPortifolio(titulo, descricao, img, categoria, match.params.portId);
   };
 
   return (
@@ -91,6 +93,65 @@ const PortifoliosEdit = ({
                         value={titulo}
                         placeholder="Seu titulo..."
                       />
+                    </div>
+                  </div>
+                </div>
+                <div style={{ marginTop: "20px" }} className="form-group">
+                  <div className="row">
+                    <div className="col-md-12">
+                      <div
+                        style={{
+                          display: "flex",
+                          justifyContent: "space-between",
+                        }}
+                      >
+                        <label htmlFor="titulo">
+                          <h4>
+                            Categoria<span style={{ color: "red" }}>* </span>
+                          </h4>
+                        </label>
+
+                        <button
+                          type="button"
+                          className="btn btn-fox"
+                          style={{
+                            height: "35px",
+                            lineHeight: "10px",
+                            paddingBottom: "10px",
+                          }}
+                          data-toggle="modal"
+                          data-target="#exampleModal"
+                        >
+                          Nova categoria
+                        </button>
+                      </div>
+                    </div>
+                    <div className="col-md-12">
+                      {portifolio ? (
+                        <select
+                          type="button"
+                          className="btn border border-dark"
+                          onChange={(e) => onChange(e)}
+                          name="categoria"
+                          value={categoria}
+                          id="categoria"
+                        >
+                          <option value="-">-</option>
+                          {categorias ? (
+                            <Fragment>
+                              {categorias.map((each) => (
+                                <option key={each._id} value={each.categoria}>
+                                  {each.categoria}
+                                </option>
+                              ))}
+                            </Fragment>
+                          ) : (
+                            ""
+                          )}
+                        </select>
+                      ) : (
+                        ""
+                      )}
                     </div>
                   </div>
                 </div>
@@ -166,13 +227,14 @@ const PortifoliosEdit = ({
                   />
                 </div>
                 <hr></hr>
+                <Alert />
                 <div className="text-center">
                   <button
                     type="submit"
                     style={{ marginRight: "30px" }}
                     className="btn btn-fox"
                   >
-                    Criar
+                    Editar
                   </button>
                   <Link to="/admin/portifolios/">
                     <button
@@ -188,20 +250,23 @@ const PortifoliosEdit = ({
           </div>
         </div>
       </div>
+      <PortifolioModalCategoria />
     </div>
   );
 };
 
 PortifoliosEdit.propTypes = {
-  createPortifolios: PropTypes.func.isRequired,
+  editPortifolio: PropTypes.func.isRequired,
   getPortifolio: PropTypes.func.isRequired,
   portifolio: PropTypes.object.isRequired,
+  categoria: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   portifolio: state.portifolio,
+  categoria: state.categoria,
 });
 
-export default connect(mapStateToProps, { createPortifolios, getPortifolio })(
+export default connect(mapStateToProps, { editPortifolio, getPortifolio })(
   PortifoliosEdit
 );

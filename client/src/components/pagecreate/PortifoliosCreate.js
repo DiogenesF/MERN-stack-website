@@ -6,7 +6,8 @@ import { connect } from "react-redux";
 import { createPortifolios } from "../../redux/actions/portifolio";
 import PropTypes from "prop-types";
 import portifolio from "../../redux/reducers/portifolio";
-import PortifolioModal from "./PortifolioModal";
+import PortifolioModalCategoria from "./PortifolioModalCategoria";
+import Alert from "../layout/Alert";
 
 const PortifoliosCreate = ({
   createPortifolios,
@@ -39,11 +40,13 @@ const PortifoliosCreate = ({
   const onSubmit = (e) => {
     e.preventDefault();
     createPortifolios(titulo, descricao, img, categoria);
-    setImg("");
-    setTitulo("");
-    setDesc("");
-    setCategoria("");
-    setShowImg(null);
+    if (titulo !== "" && descricao !== "" && categoria !== "") {
+      setImg("");
+      setTitulo("");
+      setDesc("");
+      setCategoria("");
+      setShowImg(null);
+    }
   };
 
   return (
@@ -122,7 +125,7 @@ const PortifoliosCreate = ({
                           value={categoria}
                           id="categoria"
                         >
-                          <option value="0">Selecione uma categoria</option>
+                          <option value="-">-</option>
                           {categorias ? (
                             <Fragment>
                               {categorias.map((each) => (
@@ -214,7 +217,7 @@ const PortifoliosCreate = ({
                   />
                 </div>
                 <hr></hr>
-
+                <Alert />
                 <div className="text-center">
                   <button
                     type="submit"
@@ -237,7 +240,7 @@ const PortifoliosCreate = ({
           </div>
         </div>
       </div>
-      <PortifolioModal />
+      <PortifolioModalCategoria />
     </div>
   );
 };

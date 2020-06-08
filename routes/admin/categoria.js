@@ -23,7 +23,7 @@ router.get("/", auth, async (req, res) => {
 router.post(
   "/create",
   auth,
-  [check("categoria", "Voce precisa escolher uma categoria!")],
+  [check("categoria", "Voce precisa escolher uma categoria!").not().isEmpty()],
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {

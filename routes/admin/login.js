@@ -24,8 +24,10 @@ router.get("/", auth, async (req, res) => {
 router.post(
   "/",
   [
-    check("email", "Voce precisa preencher todos os campos!"),
-    check("password", "Voce precisa preencher todos os campos!"),
+    check("email", "Voce precisa preencher todos os campos!").not().isEmpty(),
+    check("password", "Voce precisa preencher todos os campos!")
+      .not()
+      .isEmpty(),
   ],
   async (req, res) => {
     const errors = validationResult(req);
@@ -39,13 +41,17 @@ router.post(
       const user = await User.findOne({ email });
 
       if (!user) {
-        return res.status(400).json({ msg: "Invalid credentials" });
+        return res
+          .status(400)
+          .json({ errors: [{ msg: "Invalid credentials" }] });
       }
 
       const isMatch = await bcrypt.compare(password, user.password);
 
       if (!isMatch) {
-        return res.status(400).json({ msg: "Invalid credentials" });
+        return res
+          .status(400)
+          .json({ errors: [{ msg: "Invalid credentials" }] });
       }
 
       const payload = {

@@ -13,10 +13,10 @@ const Sidebar = ({ auth }) => {
           style={{ backgroundColor: "#db3d44" }}
           id="accordionSidebar"
         >
-          <a
+          <Link
             style={{ marginTop: "40px" }}
             className="sidebar-brand d-flex align-items-center justify-content-center"
-            href="#!"
+            to="/admin/portifolios"
           >
             <div className="sidebar-brand-icon">
               <img
@@ -27,7 +27,7 @@ const Sidebar = ({ auth }) => {
                 height="80"
               ></img>
             </div>
-          </a>
+          </Link>
 
           <div style={{ marginTop: "40px" }} className="sidebar-heading">
             Interface

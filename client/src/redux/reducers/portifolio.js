@@ -5,6 +5,7 @@ import {
   DELETE_PORTIFOLIO,
   GET_PORTIFOLIO,
   LOADING_PORTIFOLIO,
+  EDIT_PORTIFOLIO,
 } from "../actions/types";
 
 const initialState = {
@@ -27,6 +28,14 @@ export default function (state = initialState, action) {
       return { ...state, loading: false, error: payload };
     case CREATE_PORTIFOLIO:
       return { ...state, portifolios: [...state.portifolios, payload] };
+    case EDIT_PORTIFOLIO:
+      return {
+        ...state,
+        portifolios: [
+          ...state.portifolios.filter((each) => each._id !== payload._id),
+          { ...payload },
+        ],
+      };
     case DELETE_PORTIFOLIO:
       return {
         ...state,

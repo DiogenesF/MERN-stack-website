@@ -1,10 +1,10 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { createCategoria } from "../../redux/actions/categoria";
 import { connect } from "react-redux";
+import Alert from "../layout/Alert";
 
-const PortifolioModal = ({ createCategoria }) => {
-  const closeModal = useRef(null);
+const PortifolioModalCategoria = ({ createCategoria }) => {
   const [categoria, setCategoria] = useState("");
 
   const onChange = (e) => {
@@ -14,7 +14,7 @@ const PortifolioModal = ({ createCategoria }) => {
   const onSubmit = (e) => {
     e.preventDefault();
     createCategoria({ categoria });
-    closeModal.current.click();
+
     setCategoria("");
   };
 
@@ -47,13 +47,13 @@ const PortifolioModal = ({ createCategoria }) => {
               />
               <hr></hr>
               <div className="col-12 text-center">
+                <Alert />
                 <button
                   type="button"
                   className="btn btn-secondary mr-4 text-center"
-                  ref={closeModal}
                   data-dismiss="modal"
                 >
-                  Close
+                  Voltar
                 </button>
                 <button type="submit" className="btn btn-fox ml-4 text-center">
                   Criar
@@ -67,8 +67,8 @@ const PortifolioModal = ({ createCategoria }) => {
   );
 };
 
-PortifolioModal.propTypes = {
+PortifolioModalCategoria.propTypes = {
   createCategoria: PropTypes.func.isRequired,
 };
 
-export default connect(null, { createCategoria })(PortifolioModal);
+export default connect(null, { createCategoria })(PortifolioModalCategoria);

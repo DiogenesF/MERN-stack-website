@@ -10,9 +10,24 @@ const PortifoliosDetail = ({
   getPortifolio,
 }) => {
   useEffect(() => {
-    console.log("a");
     getPortifolio(match.params.portId);
   }, [match.params.portId, getPortifolio]);
+
+  const desc_style = {
+    display: "block",
+    width: "100%",
+    padding: ".375rem .75rem",
+    fontSize: "1rem",
+    fontWeight: "400",
+    lineHeight: "1.5",
+    color: "#6e707e",
+    backgroundClip: "padding-box",
+    border: "1px solid #d1d3e2",
+    borderRadius: ".35rem",
+    transition: "border-color .15s ease-in-out,box-shadow .15s ease-in-out",
+    backgroundColor: "#eaecf4",
+    opacity: "1",
+  };
 
   return (
     <Fragment>
@@ -28,14 +43,7 @@ const PortifoliosDetail = ({
                   <div className="col-md-12">
                     {portifolio ? (
                       <div>
-                        <input
-                          type="title"
-                          className="form-control"
-                          id="titulo"
-                          name="titulo"
-                          value={portifolio.titulo}
-                          readOnly
-                        />
+                        <p style={desc_style}>{portifolio.titulo}</p>
                       </div>
                     ) : (
                       ""
@@ -46,25 +54,36 @@ const PortifoliosDetail = ({
               <div style={{ marginTop: "20px" }} className="form-group">
                 <div className="row">
                   <div className="col-md-6">
-                    <h4>Descrição:</h4>
+                    <h4>Categoria:</h4>
                   </div>
                   <div className="col-md-12">
                     {portifolio ? (
                       <div>
-                        <div
-                          type="title"
-                          className="form-control"
-                          id="titulo"
-                          name="titulo"
-                          readOnly
-                        >
-                          <div
+                        <p style={desc_style}>{portifolio.categoria}</p>
+                      </div>
+                    ) : (
+                      ""
+                    )}
+                  </div>
+                </div>
+              </div>
+
+              <div style={{ marginTop: "20px" }} className="form-group">
+                <div className="row">
+                  <div className="col-md-6">
+                    <h4>Descrição:</h4>
+                  </div>
+                  <div className="col-md-12">
+                    {portifolio ? (
+                      <>
+                        <div style={desc_style}>
+                          <p
                             dangerouslySetInnerHTML={{
                               __html: portifolio.descricao,
                             }}
                           />
                         </div>
-                      </div>
+                      </>
                     ) : (
                       ""
                     )}

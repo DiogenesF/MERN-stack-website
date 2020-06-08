@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const ServicoSchema = new mongoose.Schema({
+const PortifolioSchema = new mongoose.Schema({
   titulo: {
     type: String,
     required: true,
@@ -22,4 +22,4 @@ const ServicoSchema = new mongoose.Schema({
   },
 });
 
-module.exports = Servico = mongoose.model("servico", ServicoSchema);
+module.exports = Portifolio = mongoose.model("portifolio", PortifolioSchema);
