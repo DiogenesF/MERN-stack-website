@@ -2,6 +2,7 @@ import api from "../../utils/api";
 
 import { LOGIN_ERROR, LOGIN, GET_USER } from "./types";
 import { setAlert } from "./alert";
+import { getCategorias } from "./categoria";
 
 export const login = (email, password) => async (dispatch) => {
   try {
@@ -27,7 +28,7 @@ export const login = (email, password) => async (dispatch) => {
 export const getUser = () => async (dispatch) => {
   try {
     const res = await api.get("/login");
-
+    dispatch(getCategorias());
     dispatch({
       type: GET_USER,
       payload: res.data,

@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { getPortifolios } from "../../redux/actions/portifolio";
 import PropTypes from "prop-types";
 import "../style/Datatable.css";
-
+import { Redirect } from "react-router-dom";
 import { Link } from "react-router-dom";
 import ModalDelete from "./ModalDelete";
 import Alert from "../layout/Alert";
@@ -25,6 +25,10 @@ const Portifolio = ({
     setId(id);
     console.log(id);
   };
+
+  if (!localStorage.token) {
+    return <Redirect to="/login" />;
+  }
 
   return (
     <Fragment>
