@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import Fox from "../../images/fox.png";
+import Fox from "../../images/foxbrand.png";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const logo = {
   backgroundImage: "url('" + Fox + "')",
@@ -11,45 +12,105 @@ const logo = {
 };
 
 const Header = (props) => {
-  return (
-    <header id="header" className="fixed-top bg-white">
-      <div className="container d-flex align-items-center">
-        <Link to="/" className="mr-auto logo" style={logo}></Link>
+  const [actives, setActives] = useState({
+    inicio: "active",
+    sobre: "",
+    portifolio: "",
+  });
 
+  const onClick = (e) => {
+    if (e.target.name === "inicio") {
+      setActives({ inicio: "active", sobre: "", portifolio: "" });
+    }
+    if (e.target.name === "sobre") {
+      setActives({ inicio: "", sobre: "active", portifolio: "" });
+    }
+    if (e.target.name === "portifolio") {
+      setActives({ inicio: "", sobre: "", portifolio: "active" });
+    }
+  };
+
+  return (
+    <header
+      style={{ backgroundColor: "#73002b" }}
+      id="header"
+      className="fixed-top"
+    >
+      <div className="container d-flex align-items-center">
+        {/*Mobile*/}
+        <button type="button" className="mobile-nav-toggle d-lg-none">
+          <div className="nav-item dropdown no-arrow">
+            <div
+              className="nav-link dropdown-toggle"
+              id="userDropdown"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              <FontAwesomeIcon icon="bars" color="red" size="lg" />
+            </div>
+
+            <div
+              style={{
+                width: "57vw",
+                fontSize: "90%",
+                textAlign: "center",
+
+                paddingTop: "0px",
+              }}
+              className="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+              aria-labelledby="userDropdown"
+            >
+              <a
+                style={{ paddingTop: "15px" }}
+                className="dropdown-item"
+                href="#!"
+              >
+                Inicio
+              </a>
+              <a
+                style={{ paddingTop: "15px" }}
+                className="dropdown-item"
+                href="#!"
+              >
+                Sobre nos
+              </a>
+              <a
+                style={{ paddingTop: "15px" }}
+                className="dropdown-item"
+                href="#!"
+              >
+                Portifolio
+              </a>
+            </div>
+          </div>
+        </button>
+        {/*End mobile*/}
+        <Link to="/" className="mr-auto logo" style={logo}></Link>
         <nav
           className="nav-menu d-none d-lg-block"
           style={{ marginTop: "-10px" }}
         >
           <ul>
-            <li className="active">
-              <a className="nav-legis" href="#carouselExampleControls">
+            <li onClick={(e) => onClick(e)} className={`${actives.inicio}`}>
+              <a name="inicio" className="nav-legis" href="#inicioCarousel">
                 Inicio
               </a>
             </li>
-            <li>
-              <a className="nav-legis" href="#about">
+            <li onClick={(e) => onClick(e)} className={`${actives.sobre}`}>
+              <a name="sobre" className="nav-legis" href="#about">
                 Sobre Nós
               </a>
             </li>
-            <li>
-              <a className="nav-legis" href="#services">
-                Serviços
+            <li onClick={(e) => onClick(e)} className={`${actives.portifolio}`}>
+              <a name="portifolio" className="nav-legis" href="#services">
+                Portifolio
               </a>
             </li>
-            <li>
-              <a className="nav-legis" href="#contact">
-                Fale Conosco
+            <li onClick={(e) => onClick(e)} className={`${actives.contato}`}>
+              <a name="contato" className="nav-legis" href="#contact">
+                Contato
               </a>
-            </li>
-            <li style={{ paddingRight: "25px" }}>
-              <a className="nav-legis" href="#postsblog">
-                Blog
-              </a>
-            </li>
-            <li>
-              <button className="botaoPadrao" href="blog.html">
-                Consulta Marca
-              </button>
             </li>
           </ul>
         </nav>

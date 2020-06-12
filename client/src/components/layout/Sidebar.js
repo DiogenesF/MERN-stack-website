@@ -22,7 +22,7 @@ const Sidebar = ({ auth }) => {
               <img
                 style={{ borderRadius: "50%" }}
                 src={Fox}
-                alt="Legis"
+                alt="Logo"
                 width="80"
                 height="80"
               ></img>

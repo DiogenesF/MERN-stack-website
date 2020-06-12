@@ -15,6 +15,11 @@ import {
   faLessThan,
   faSearch,
   faUserFriends,
+  faEdit,
+  faTrash,
+  faFileAlt,
+  faMapMarkerAlt,
+  faEnvelope,
 } from "@fortawesome/free-solid-svg-icons";
 
 library.add(
@@ -28,7 +33,12 @@ library.add(
   faPhone,
   faLessThan,
   faSearch,
-  faUserFriends
+  faUserFriends,
+  faEdit,
+  faTrash,
+  faFileAlt,
+  faMapMarkerAlt,
+  faEnvelope
 );
 
 function App() {

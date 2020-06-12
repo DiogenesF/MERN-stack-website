@@ -6,6 +6,7 @@ const portifolioRouter = require("./routes/admin/portifolios");
 const contatoRouter = require("./routes/admin/contato");
 const loginRouter = require("./routes/admin/login");
 const categoriaRouter = require("./routes/admin/categoria");
+const contactRouter = require("./routes/homepage/contact");
 
 const app = express();
 
@@ -20,6 +21,7 @@ app.use("/admin/portifolios", portifolioRouter);
 app.use("/admin/contato", contatoRouter);
 app.use("/admin/login", loginRouter);
 app.use("/admin/categoria", categoriaRouter);
+app.use("/contato", contactRouter);
 
 const PORT = process.env.PORT || 5000;
 

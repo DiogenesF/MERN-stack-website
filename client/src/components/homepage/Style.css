@@ -1,10 +1,11 @@
+/*Style do template*/
 .nav-legis .header-scrolled {
-  color: #0e1b3e;
+  color: white;
   font-size: 20px;
 }
 .nav-legis {
-  color: #0e1b3e;
-  font-size: 20px;
+  color: white;
+  font-size: 25px;
   margin-top: 11px;
 }
 
@@ -14,6 +15,7 @@
 .legis-size-title {
   font-size: 48px;
 }
+
 .nav-menu > ul > li > a:before {
   background-color: #59c1aa;
 }
@@ -28,16 +30,14 @@
   padding-right: 25px;
 }
 a:hover {
-  color: #706c6c;
+  color: #bfb9b9;
 }
 .services .icon-box:hover::before {
   background: #59c1aa;
   top: 0;
   border-radius: 0px;
 }
-.services .icon-box {
-  padding: 0px 20px;
-}
+
 .header-scrolled .nav-menu > ul > li > a:hover,
 .header-inner-pages .nav-menu > ul > li > a:hover {
   color: #706c6c;
@@ -184,7 +184,7 @@ a:hover {
   height: 2px;
   bottom: -6px;
   left: 0;
-  background-color: #e43c5c;
+  background-color: #ff9200;
   visibility: hidden;
   transform: scaleX(0);
   transition: all 0.3s ease-in-out 0s;
@@ -601,43 +601,35 @@ section {
 }
 
 .services .icon-box {
-  padding: 60px 30px;
   position: relative;
   overflow: hidden;
   background: #fff;
-  box-shadow: 2px 0 35px 0 rgba(68, 88, 144, 0.12);
+  cursor: pointer;
   transition: all 0.3s ease-in-out;
   z-index: 1;
   text-align: center;
 }
 
 .services .icon-box::before {
-  content: "";
   position: absolute;
   background: #fdeff2;
   right: 0;
   left: 0;
   bottom: 0;
   top: 100%;
-  transition: all 0.4s;
+
   z-index: -1;
 }
-
-.services .icon-box:hover::before {
-  background: #59c1aa;
+.services .icon-box:hover {
+  background: #ff9200;
+  box-shadow: rgba(0, 0, 0, 0.8) 0px 5px 15px,
+    inset rgba(0, 0, 0, 0.15) 0px -10px 20px;
   top: 0;
   border-radius: 0px;
 }
 
 .services .icon {
   margin-bottom: 15px;
-}
-
-.services .icon i {
-  font-size: 48px;
-  line-height: 1;
-  color: #e43c5c;
-  transition: all 0.3s ease-in-out;
 }
 
 .services .title {
@@ -651,7 +643,7 @@ section {
 }
 
 .services .description {
-  font-size: 15px;
+  font-size: 20px;
   line-height: 28px;
   margin-bottom: 0;
 }
@@ -773,7 +765,7 @@ section {
 
 .contact .info i {
   font-size: 20px;
-  color: #e43c5c;
+  color: #db3d44;
   float: left;
   width: 44px;
   height: 44px;
@@ -803,108 +795,6 @@ section {
 .contact .info .email,
 .contact .info .phone {
   margin-top: 40px;
-}
-
-.contact .info .email:hover i,
-.contact .info .address:hover i,
-.contact .info .phone:hover i {
-  background: #59c1aa;
-  color: #fff;
-}
-
-.contact .php-email {
-  width: 100%;
-  background: #0e1b3e;
-}
-
-.contact .php-email .form-group {
-  padding-bottom: 8px;
-  justify-content: center;
-}
-
-.contact .php-email .validate {
-  display: none;
-  color: white;
-  margin: 0 0 15px 0;
-  font-weight: 400;
-  font-size: 13px;
-}
-
-.contact .php-email .error-message {
-  display: none;
-  color: #fff;
-  background: #ed3c0d;
-  text-align: center;
-  padding: 15px;
-  font-weight: 600;
-}
-
-.contact .php-email .sent-message {
-  display: none;
-  color: #fff;
-  background: #18d26e;
-  text-align: center;
-  padding: 15px;
-  font-weight: 600;
-}
-
-.contact .php-email .loading {
-  display: none;
-  background: #fff;
-  text-align: center;
-  padding: 15px;
-}
-
-.contact .php-email .loading:before {
-  content: "";
-  display: inline-block;
-  border-radius: 50%;
-  width: 24px;
-  height: 24px;
-  margin: 0 10px -6px 0;
-  border: 3px solid #18d26e;
-  border-top-color: #eee;
-  -webkit-animation: animate-loading 1s linear infinite;
-  animation: animate-loading 1s linear infinite;
-}
-
-.contact .php-email input,
-.contact .php-email textarea {
-  border-radius: 0;
-  box-shadow: none;
-  font-size: 14px;
-}
-
-.contact .php-email input:focus,
-.contact .php-email textarea:focus {
-  border-color: #59c1aa;
-}
-
-.contact .php-email input {
-  height: 44px;
-  border-radius: 30px;
-}
-
-.contact .php-email textarea {
-  padding: 10px 12px;
-  border-radius: 40px;
-}
-
-.contact .php-email button[type="submit"] {
-  background: #3b8070;
-  padding: 8px 40px 10px 40px;
-  border-radius: 50px;
-  border: 2px solid #59c1aa;
-  color: #0e1b3e;
-  font-size: 17px;
-  font-weight: 400;
-  font-family: "Aleo", serif;
-  font-weight: 600;
-  transition: 0.3s;
-}
-
-.contact .php-email button[type="submit"]:hover {
-  background: #59c1aa;
 }
 
 @-webkit-keyframes animate-loading {

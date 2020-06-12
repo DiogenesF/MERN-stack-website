@@ -9,6 +9,7 @@ import ModalDelete from "./ModalDelete";
 import Alert from "../layout/Alert";
 
 import Dotdotdot from "react-dotdotdot";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Portifolio = ({
   getPortifolios,
@@ -150,18 +151,15 @@ const Portifolio = ({
                                           to={`/admin/portifolios/${each._id}`}
                                           className="btn btn-success"
                                         >
-                                          <span className="far fa-file-alt">
-                                            Detalhes
-                                          </span>
+                                          <FontAwesomeIcon icon="file-alt" />{" "}
+                                          Detalhes
                                         </Link>
                                         <Link
                                           to={`/admin/portifolios/edit/${each._id}`}
                                           type="button"
                                           className="btn btn-warning"
                                         >
-                                          <span className="far fa-edit">
-                                            Editar
-                                          </span>
+                                          <FontAwesomeIcon icon="edit" /> Editar
                                         </Link>
                                         <button
                                           type="button"
@@ -170,9 +168,8 @@ const Portifolio = ({
                                           data-toggle="modal"
                                           data-target="#exampleModalApagar"
                                         >
-                                          <span className="far fa-trash-alt">
-                                            Apagar
-                                          </span>
+                                          <FontAwesomeIcon icon="trash" />{" "}
+                                          Apagar
                                         </button>
                                       </td>
                                     </tr>
