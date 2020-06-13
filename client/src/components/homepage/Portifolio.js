@@ -1,6 +1,6 @@
 import React from "react";
 
-import Fox2 from "../../images/foxbrand.png";
+import Fox2 from "../../images/foxlogin.png";
 
 const Portifolio = (props) => {
   return (

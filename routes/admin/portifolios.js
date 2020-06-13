@@ -44,7 +44,7 @@ var upload = multer({
 
 //Route: /admin/portifolios/
 //Get all the portifolios
-router.get("/", [auth], async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const portifolios = await Portifolio.find();
 

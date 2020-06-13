@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { contactForm } from "../../redux/actions/contact";
 import Alert from "../layout/Alert";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
-const Contato = ({ alert: { loading }, contactForm }) => {
+const Contato = ({ alert: { loading, sent }, contactForm }) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -15,6 +15,10 @@ const Contato = ({ alert: { loading }, contactForm }) => {
 
   const { name, email, subject, message } = formData;
 
+  useEffect(() => {
+    if (sent) setFormData({ name: "", email: "", subject: "", message: "" });
+  }, [sent]);
+
   const onChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -22,7 +26,6 @@ const Contato = ({ alert: { loading }, contactForm }) => {
   const onSubmit = (e) => {
     e.preventDefault();
     contactForm(formData);
-    setFormData({ name: "", email: "", subject: "", message: "" });
   };
 
   return (
@@ -131,14 +134,14 @@ const Contato = ({ alert: { loading }, contactForm }) => {
                   value={message}
                   data-rule="required"
                   data-msg="Escreva algo"
-                  placeholder="Mensagem"
+                  placeholder="Escreva-nos uma mensagem.."
                 ></textarea>
                 <div className="validate"></div>
               </div>
               {loading ? <h3>Loading...</h3> : <Alert />}
 
               <div className="text-center">
-                <button className="btn btn-fox">Send Message</button>
+                <button className="btn btn-fox">Enviar</button>
               </div>
             </form>
           </div>

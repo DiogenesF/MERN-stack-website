@@ -31,7 +31,7 @@ router.post(
 
       transporter.sendMail(mailOptions, function (error, info) {
         if (error) {
-          res.status(400).json({ errors: errors.array() });
+          res.status(400).json(error);
         } else {
           res.json("Email enviado com sucesso");
         }

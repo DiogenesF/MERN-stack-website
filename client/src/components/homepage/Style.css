@@ -43,9 +43,6 @@ a:hover {
   color: #706c6c;
 }
 
-header.fixed-top.header-scrolled .logo {
-  background-image: url("{{asset('assets/img/logo2_2.png')}}"); /*//verificar se precisa*/
-}
 .botaoPadrao {
   background: #59c1aa;
   padding: 8px 40px 10px 40px;

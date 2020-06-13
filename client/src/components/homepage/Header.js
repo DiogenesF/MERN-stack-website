@@ -7,7 +7,7 @@ const logo = {
   backgroundImage: "url('" + Fox + "')",
   backgroundRepeat: "no-repeat",
   backgroundSize: "contain",
-  width: "250px",
+  width: "120px",
   height: "70px",
 };
 
@@ -32,7 +32,7 @@ const Header = (props) => {
 
   return (
     <header
-      style={{ backgroundColor: "#73002b" }}
+      style={{ boxShadow: "0 2px 10px -6px black", backgroundColor: "#73002b" }}
       id="header"
       className="fixed-top"
     >
