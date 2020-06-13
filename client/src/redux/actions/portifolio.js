@@ -120,8 +120,10 @@ export const deletePortifolio = (id) => async (dispatch) => {
 
     dispatch(setAlert("Item Excluido com Sucesso", "success"));
   } catch (err) {
-    dispatch(setAlert(err.response.data, "danger"));
-    console.log(err.response.data);
+    const errors = err.response.data.errors;
+    errors.map((each) => {
+      return dispatch(setAlert(each.msg, "danger"));
+    });
     dispatch({
       type: PORTIFOLIO_ERROR,
       payload: { msg: err.response.statusText, status: err.response.status },

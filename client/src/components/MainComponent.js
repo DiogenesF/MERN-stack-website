@@ -13,6 +13,7 @@ import PortifoliosCreate from "./pagecreate/PortifoliosCreate";
 import { getUser } from "../redux/actions/auth";
 import PortifoliosEdit from "./pageedit/PortifoliosEdit";
 import PortifoliosDetail from "./pagedetails/PortifoliosDetail";
+import Usuarios from "./table/Usuarios";
 
 import Home from "./homepage/Home";
 
@@ -63,6 +64,11 @@ const MainComponent = (props) => {
                       exct
                       path="/admin/portifolios/:portId"
                       component={PortifoliosDetail}
+                    />
+                    <PrivateRoute
+                      exct
+                      path="/admin/users"
+                      component={Usuarios}
                     />
                     <Route component={Notfound} />
                   </Switch>

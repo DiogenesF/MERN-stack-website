@@ -50,6 +50,10 @@ const Sidebar = ({ auth }) => {
               <FontAwesomeIcon icon="phone" size="lg" />
               <span>Contato</span>
             </a>
+            <Link to="/admin/users" className="nav-link">
+              <FontAwesomeIcon icon="user" size="lg" />
+              <span>Usuarios</span>
+            </Link>
           </li>
 
           <div className="text-center d-none d-md-inline">

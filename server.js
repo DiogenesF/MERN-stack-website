@@ -19,7 +19,7 @@ app.use("/admin/posts", postRouter);
 app.use("/admin/banners", bannerRouter);
 app.use("/admin/portifolios", portifolioRouter);
 app.use("/admin/contato", contatoRouter);
-app.use("/admin/login", loginRouter);
+app.use("/admin", loginRouter);
 app.use("/admin/categoria", categoriaRouter);
 app.use("/contato", contactRouter);
 

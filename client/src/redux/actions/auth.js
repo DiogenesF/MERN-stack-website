@@ -1,6 +1,12 @@
 import api from "../../utils/api";
 
-import { LOGIN_ERROR, LOGIN, GET_USER } from "./types";
+import {
+  LOGIN_ERROR,
+  LOGIN,
+  GET_USER,
+  GET_ALL_USERS,
+  EDIT_USER,
+} from "./types";
 import { setAlert } from "./alert";
 import { getCategorias } from "./categoria";
 
@@ -31,6 +37,38 @@ export const getUser = () => async (dispatch) => {
     dispatch(getCategorias());
     dispatch({
       type: GET_USER,
+      payload: res.data,
+    });
+  } catch (err) {
+    dispatch({
+      type: LOGIN_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
+
+export const getAllUsers = () => async (dispatch) => {
+  try {
+    const res = await api.get("/users");
+
+    dispatch({
+      type: GET_ALL_USERS,
+      payload: res.data,
+    });
+  } catch (err) {
+    dispatch({
+      type: LOGIN_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
+
+export const makeUserAdmin = (id) => async (dispatch) => {
+  try {
+    const res = await api.put(`/edit/${id}`);
+
+    dispatch({
+      type: EDIT_USER,
       payload: res.data,
     });
   } catch (err) {

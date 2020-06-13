@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import "../style/Datatable.css";
 import { Redirect } from "react-router-dom";
 import { Link } from "react-router-dom";
-import ModalDelete from "./ModalDelete";
+import ModalConfirmar from "./ModalConfirmar";
 import Alert from "../layout/Alert";
 
 import Dotdotdot from "react-dotdotdot";
@@ -24,7 +24,6 @@ const Portifolio = ({
 
   const onClick = (id) => {
     setId(id);
-    console.log(id);
   };
 
   if (!localStorage.token) {
@@ -166,7 +165,7 @@ const Portifolio = ({
                                           className="btn btn-danger"
                                           onClick={(e) => onClick(each._id)}
                                           data-toggle="modal"
-                                          data-target="#exampleModalApagar"
+                                          data-target="#exampleModalConfirmar"
                                         >
                                           <FontAwesomeIcon icon="trash" />{" "}
                                           Apagar
@@ -252,7 +251,7 @@ const Portifolio = ({
               </div>
             </div>
           </div>
-          <ModalDelete id={id} />
+          <ModalConfirmar id={id} />
         </div>
       )}
     </Fragment>

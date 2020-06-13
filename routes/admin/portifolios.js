@@ -4,7 +4,8 @@ const express = require("express");
 const router = express.Router();
 multer = require("multer");
 const { check, validationResult } = require("express-validator");
-const auth = require("../../middleware/auth");
+const { auth, admin } = require("../../middleware/auth");
+
 const fs = require("fs");
 
 const Portifolio = require("../../models/Portifolio");
@@ -57,7 +58,7 @@ router.get("/", async (req, res) => {
 
 //Route: /admin/portifolios/portifoliosId
 //Get one portifolio
-router.get("/:portifolioId", [auth], async (req, res) => {
+router.get("/:portifolioId", auth, async (req, res) => {
   try {
     const portifolio = await Portifolio.findById(req.params.portifolioId);
 
@@ -82,6 +83,7 @@ router.post(
   upload.single("img"),
   [
     auth,
+    admin,
     [
       check("titulo", "Voce deve escrever um titulo").not().isEmpty(),
       check("descricao", "Voce deve escrever uma descricao").not().isEmpty(),
@@ -125,6 +127,7 @@ router.put(
   upload.single("img"),
   [
     auth,
+    admin,
     [
       check("titulo", "Voce deve escrever um titulo").not().isEmpty(),
       check("descricao", "Voce deve escrever uma descricao").not().isEmpty(),
@@ -179,7 +182,7 @@ router.put(
 
 //Route: /admin/portifolios/portifolioId
 //Delete a portifolio
-router.delete("/:portifolioId", [auth], async (req, res) => {
+router.delete("/:portifolioId", [auth, admin], async (req, res) => {
   try {
     const portifolio = await Portifolio.findById(req.params.portifolioId);
     if (!portifolio) {

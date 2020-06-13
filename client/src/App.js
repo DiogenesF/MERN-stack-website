@@ -20,6 +20,7 @@ import {
   faFileAlt,
   faMapMarkerAlt,
   faEnvelope,
+  faUser,
 } from "@fortawesome/free-solid-svg-icons";
 
 library.add(
@@ -38,7 +39,8 @@ library.add(
   faTrash,
   faFileAlt,
   faMapMarkerAlt,
-  faEnvelope
+  faEnvelope,
+  faUser
 );
 
 function App() {

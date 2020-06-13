@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const auth = require("../../middleware/auth");
+const { auth, admin } = require("../../middleware/auth");
 
 const { check, validationResult } = require("express-validator");
 
@@ -23,6 +23,7 @@ router.get("/", auth, async (req, res) => {
 router.post(
   "/create",
   auth,
+  admin,
   [check("categoria", "Voce precisa escolher uma categoria!").not().isEmpty()],
   async (req, res) => {
     const errors = validationResult(req);
