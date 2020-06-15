@@ -15,6 +15,7 @@ const Header = (props) => {
   const [actives, setActives] = useState({
     inicio: "active",
     sobre: "",
+    team: "",
     portifolio: "",
   });
 
@@ -24,6 +25,9 @@ const Header = (props) => {
     }
     if (e.target.name === "sobre") {
       setActives({ inicio: "", sobre: "active", portifolio: "" });
+    }
+    if (e.target.name === "team") {
+      setActives({ inicio: "", sobre: "", team: "active", portifolio: "" });
     }
     if (e.target.name === "portifolio") {
       setActives({ inicio: "", sobre: "", portifolio: "active" });
@@ -100,6 +104,11 @@ const Header = (props) => {
             <li onClick={(e) => onClick(e)} className={`${actives.sobre}`}>
               <a name="sobre" className="nav-legis" href="#about">
                 Sobre Nós
+              </a>
+            </li>
+            <li onClick={(e) => onClick(e)} className={`${actives.team}`}>
+              <a name="team" className="nav-legis" href="#team">
+                Membros
               </a>
             </li>
             <li onClick={(e) => onClick(e)} className={`${actives.portifolio}`}>

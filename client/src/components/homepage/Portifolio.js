@@ -33,7 +33,67 @@ const Portifolio = (props) => {
                 src={Fox2}
                 alt="aq"
               />
-              <p className="description">Titulo aqui Titulo aquiTitulo a</p>
+              <p className="description">Pequeno titulo do portifolio aqui</p>
+            </div>
+          </div>
+          <div className="col-md-4 d-flex align-items-stretch mt-4">
+            <div
+              style={{
+                paddingBottom: "30px",
+              }}
+              className="icon-box"
+            >
+              <img
+                style={{
+                  height: "300px",
+                  width: "100%",
+                  objectFit: "fill",
+                }}
+                className="figure-img img-fluid"
+                src={Fox2}
+                alt="aq"
+              />
+              <p className="description">Pequeno titulo do portifolio aqui</p>
+            </div>
+          </div>
+          <div className="col-md-4 d-flex align-items-stretch mt-4">
+            <div
+              style={{
+                paddingBottom: "30px",
+              }}
+              className="icon-box"
+            >
+              <img
+                style={{
+                  height: "300px",
+                  width: "100%",
+                  objectFit: "fill",
+                }}
+                className="figure-img img-fluid"
+                src={Fox2}
+                alt="aq"
+              />
+              <p className="description">Pequeno titulo do portifolio aqui</p>
+            </div>
+          </div>
+          <div className="col-md-4 d-flex align-items-stretch mt-4">
+            <div
+              style={{
+                paddingBottom: "30px",
+              }}
+              className="icon-box"
+            >
+              <img
+                style={{
+                  height: "300px",
+                  width: "100%",
+                  objectFit: "fill",
+                }}
+                className="figure-img img-fluid"
+                src={Fox2}
+                alt="aq"
+              />
+              <p className="description">Pequeno titulo do portifolio aqui</p>
             </div>
           </div>
         </div>
