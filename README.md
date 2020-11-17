@@ -3,7 +3,9 @@
 Site dinâmico construído com React + Node.
 
 Utilizando Redux para gerenciamento de state.
+
 Utilizando Multer para upload de imagens.
+
 Autenticação com JWT.
 
 ## O site possui uma tela de login para a área do admin:
