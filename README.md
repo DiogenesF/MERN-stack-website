@@ -27,7 +27,7 @@ e acessar a pasta client e inicializar o frontend utilizando:
 
 ###  `npm start`
 
-Feito isso, é necessário registrar um usuário para ser capaz de fazer login na área do admin. O backend possui uma rota /admin/register que permite o registro de usuários, essa rota não é acessível do frontend da aplicação (as informações estão nos arquivos dentro da pasta routes)
+Feito isso, é necessário registrar um usuário para ser capaz de fazer login na área do admin. O backend possui uma rota /admin/register que permite o registro de usuários, essa rota não é acessível do frontend da aplicação (as informações estão no arquivo que se encontra em /routes/admin/login.js)
 
 ## O site possui uma tela de login para a área do admin:
 
