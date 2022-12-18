@@ -1,44 +1,41 @@
 # MERN-stack-website
 
-## Site dinâmico construído com React + Node.
+## A dynamic website built with React + Node.
 
-Utilizando Redux para gerenciamento de state.
+Using redux for state management.
 
-Utilizando Multer para upload de imagens.
+Using Multer for image uploading.
 
-Autenticação com JWT.
+JWT authetication.
 
-## Para executar essa aplicação:
-É necessário criar um arquivo default.json dentro da pasta config contendo o seguinte conteúdo:
+## To run the app:
+It's necessary a default.json file inside the config folder containing the following:
 ```js
 {
     "mongoURI": "",
     "jwtSecret": ""
 }
 ```
-Onde voce precisará utilizar o mongoDB Atlas e criar um cluster e utilizar seu token no campo mongoURI
-E também criar um token qualquer para o campo jwtSecret
+A mongoDB Atables cluster will be needed so that you can get a token and use it in the mongoURI field.
+A JWT secret is needed as well
 
-Após isso, para executar é necessário apenas inicializar o servidor utilizando:
+After that, we can start the server by running:
 
 ### `npm run server` 
 
-e acessar a pasta client e inicializar o frontend utilizando:
+and in the client directory, start the app with:
 
 ###  `npm start`
 
-Feito isso, é necessário registrar um usuário para ser capaz de fazer login na área do admin. O backend possui uma rota /admin/register que permite o registro de usuários, essa rota não é acessível do frontend da aplicação (as informações estão no arquivo que se encontra em /routes/admin/login.js)
+Once that is done, it's necessary to register an user to be an admin. The backend has a route /admin/register which allows users to be registered as admin. This route is not accessible through the frontend (the infos are in the file in the path: /routes/admin/login.js)
 
-## O site possui uma tela de login para a área do admin:
+## The login screen for the admin area:
 
 <img src="./images_exp/login.jpeg" alt="Image Info" height="400"  />
 
-## Possui a área do admin com CRUDs para inserir informações para serem exibidas na homepage do site
+## The admin area with CRUDs to insert infos to be shown in the homepage
 
 <img src="./images_exp/admin.jpeg" alt="Image Info" height="400"  />
 
 <img src="./images_exp/edit.jpeg" alt="Image Info" height="400"  />
 
-## A homepage do site exibe os dados que estão cadastrados no banco de dados
-
-<img src="./images_exp/home.jpeg" alt="Image Info" height="400"  />
